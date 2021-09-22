@@ -107,6 +107,7 @@ struct vdso_data {
 	u32			__unused;
 
 	struct arch_vdso_data	arch_data;
+	u32			dummy;
 };
 
 /*
