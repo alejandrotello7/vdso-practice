@@ -8,13 +8,17 @@
 #include <linux/export.h>
 #include <linux/smp.h>
 #include <linux/sched.h>
+#include <linux/types.h>
+
 //#include "../../../../lib/vdso/cpugetter.c"
 //#include "../../../../lib/vdso/gettimeofday.c"
 
 //extern int __vdso_cpu_getter(unsigned *cpu, unsigned *dummy, unsigned *cpu2);
 
 //notrace int __vdso_cpu_getter(unsigned *cpu, unsigned *dummy, unsigned *cpu2)
-notrace int __vdso_cpu_getter(int num1, int num2)
+//notrace int __vdso_cpu_getter(int num1, int num2)
+//notrace int __vdso_cpu_getter(unsigned *cpu, unsigned *dummy, unsigned *cpu2)
+notrace int __vdso_cpu_getter(struct __kernel_old_timeval *tv, struct timezone *tz)
 {
     //int x = num_present_cpus();
     //int x = NR_CPUS;
@@ -28,5 +32,5 @@ notrace int __vdso_cpu_getter(int num1, int num2)
 }
 
 
-int cpu_getter(int num1, int num2)
+int cpu_getter(unsigned *cpu, unsigned *dummy, unsigned *cpu2)
     __attribute__((weak, alias("__vdso_cpu_getter")));
