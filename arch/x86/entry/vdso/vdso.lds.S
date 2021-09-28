@@ -29,6 +29,8 @@ VERSION {
 		__vdso_clock_getres;
 		cpu_getter;
 		__vdso_cpu_getter;
+		nr_cpus_getter;
+		__vdso_nr_cpus_getter;
 	local: *;
 	};
 }

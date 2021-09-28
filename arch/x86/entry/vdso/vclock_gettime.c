@@ -14,6 +14,8 @@
 
 #include "../../../../lib/vdso/gettimeofday.c"
 
+#include <linux/getcpu.h>
+
 extern int __vdso_gettimeofday(struct __kernel_old_timeval *tv, struct timezone *tz);
 extern __kernel_old_time_t __vdso_time(__kernel_old_time_t *t);
 

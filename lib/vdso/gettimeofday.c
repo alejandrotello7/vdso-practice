@@ -5,6 +5,8 @@
 #include <vdso/datapage.h>
 #include <vdso/helpers.h>
 
+#include <linux/getcpu.h>
+
 #ifndef vdso_calc_delta
 /*
  * Default implementation which works for all sane clocksources. That
@@ -305,6 +307,7 @@ __cvdso_gettimeofday_data(const struct vdso_data *vd,
 
 		tv->tv_sec = ts.tv_sec;
 		tv->tv_usec = (u32)ts.tv_nsec / NSEC_PER_USEC;
+		
 	}
 
 	if (unlikely(tz != NULL)) {
@@ -324,6 +327,8 @@ __cvdso_gettimeofday(struct __kernel_old_timeval *tv, struct timezone *tz)
 {
 	return __cvdso_gettimeofday_data(__arch_get_vdso_data(), tv, tz);
 }
+
+
 
 #ifdef VDSO_HAS_TIME
 static __maybe_unused __kernel_old_time_t

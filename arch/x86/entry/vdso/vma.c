@@ -44,6 +44,8 @@ unsigned int vclocks_used __read_mostly;
 unsigned int __read_mostly vdso64_enabled = 1;
 #endif
 
+
+
 void __init init_vdso_image(const struct vdso_image *image)
 {
 	BUG_ON(image->size % PAGE_SIZE != 0);
