@@ -20,6 +20,7 @@
 #include <asm/pvclock.h>
 #include <clocksource/hyperv_timer.h>
 
+#define _variablevar (VVAR(variablevar))
 #define __vdso_data (VVAR(_vdso_data))
 #define __timens_vdso_data (TIMENS(_vdso_data))
 

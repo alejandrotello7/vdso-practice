@@ -37,10 +37,7 @@
 #include <asm/desc.h>
 #include <asm/cpufeature.h>
 #include <clocksource/hyperv_timer.h>
-#include <asm/alternative.h>
-#include <asm/cmpxchg.h>
-#include <asm/rmwcc.h>
-#include <asm/barrier.h>
+
 
 
 
@@ -64,7 +61,7 @@ extern notrace int __vdso_cpu_getter(void)
     //int x = num_present_cpus();
     //unsigned int x = NR_CPUS; //maximum number of CPUS that OS can handle
     //unsigned int x = nr_cpu_ids; 
-    unsigned int x = num_online_cpus();
+    //unsigned int x = num_online_cpus();
     //int pid = task_pid_nr(current);
     //return __cvdso_cpu_getter();
     //vdso_get_cpunode(cpu,dummy,cpu2);
@@ -86,8 +83,9 @@ extern notrace int __vdso_cpu_getter(void)
     //unsigned int y = CONFIG_NR_CPUS_DEFAULT;
     //unsigned int x = NR_CPUS;
     //unsigned int p = current->state;
+    VVAR(variablevar) = 1;
     unsigned int z = PID_MAX_LIMIT;
-    return x;
+    return z;
 }
 
 extern notrace int __vdso_nr_cpus_getter(void)

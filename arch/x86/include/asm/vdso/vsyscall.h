@@ -10,7 +10,9 @@
 #include <asm/vgtod.h>
 #include <asm/vvar.h>
 
+DEFINE_VVAR(int, variablevar);
 DEFINE_VVAR(struct vdso_data, _vdso_data);
+
 /*
  * Update the vDSO data page to keep in sync with kernel timekeeping.
  */
