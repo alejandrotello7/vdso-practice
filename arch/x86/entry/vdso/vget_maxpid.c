@@ -10,17 +10,17 @@
 
 #include "../../../../lib/vdso/getmaxpid.c"
 #include "../../../../lib/vdso/gettimeofday.c"
-#include "../../../../lib/vdso/getmaxcpus.c"
 
 
-extern notrace int __vdso_nr_cpus_getter(void)
+extern notrace int __vdso_get_maxpid(void)
 {
-    return cvdso_getmaxcpus();
+    return cvdso_getmaxpid();
 }
 
-int nr_cpus_getter(void)
-    __attribute__((weak, alias("__vdso_nr_cpus_getter")));
-    
+
+int get_maxpid(void)
+    __attribute__((weak, alias("__vdso_get_maxpid")));
+
     
     
     

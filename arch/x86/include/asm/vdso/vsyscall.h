@@ -12,6 +12,8 @@
 
 DEFINE_VVAR(int, maxpid_data);
 DEFINE_VVAR(struct vdso_data, _vdso_data);
+DEFINE_VVAR(int, maxcpus_data);
+
 
 /*
  * Update the vDSO data page to keep in sync with kernel timekeeping.
