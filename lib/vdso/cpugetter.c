@@ -2,15 +2,17 @@
 #include <linux/getcpu.h>
 #include <linux/time.h>
 #include <asm/vgtod.h>
+#include <vdso/datapage.h>
+#include <vdso/helpers.h>
 
+static int 
+__cvdso_getvariable_data(const int *cp)
+{
+	cp = PID_MAX_LIMIT;
+	return cp;
+}
 
-static int cpugetter(void){
-    /*unsigned cpu = cpumask_first(cpu_online_mask);
-
-        while (cpu < nr_cpu_ids) {
-                pr_info("CPU: %u, freq: %u kHz\n", cpu, cpufreq_get(cpu));
-                cpu = cpumask_next(cpu, cpu_online_mask);
-        }*/
-
-    return 0;
+static int cvdso_getvariable(void)
+{
+   return __cvdso_getvariable_data(get_variablevar());
 }

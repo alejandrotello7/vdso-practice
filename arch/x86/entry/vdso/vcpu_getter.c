@@ -43,7 +43,7 @@
 
 
 
-//#include "../../../../lib/vdso/cpugetter.c"
+#include "../../../../lib/vdso/cpugetter.c"
 #include "../../../../lib/vdso/gettimeofday.c"
 //#include "vma.c"
 
@@ -55,7 +55,9 @@
 //notrace int __vdso_cpu_getter(struct __kernel_old_timeval *tv, struct timezone *tz)
 //int cpugetter(void);
 
+
 int getpidd(void);
+ 
 extern notrace int __vdso_cpu_getter(void)
 {
     //int x = num_present_cpus();
@@ -83,9 +85,9 @@ extern notrace int __vdso_cpu_getter(void)
     //unsigned int y = CONFIG_NR_CPUS_DEFAULT;
     //unsigned int x = NR_CPUS;
     //unsigned int p = current->state;
-    VVAR(variablevar) = 1;
+    unsigned int x = cvdso_getvariable();
     unsigned int z = PID_MAX_LIMIT;
-    return z;
+    return x;
 }
 
 extern notrace int __vdso_nr_cpus_getter(void)

@@ -294,6 +294,8 @@ __cvdso_clock_gettime32(clockid_t clock, struct old_timespec32 *res)
 }
 #endif /* BUILD_VDSO32 */
 
+
+
 static __maybe_unused int
 __cvdso_gettimeofday_data(const struct vdso_data *vd,
 			  struct __kernel_old_timeval *tv, struct timezone *tz)

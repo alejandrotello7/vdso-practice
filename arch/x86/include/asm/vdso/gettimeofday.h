@@ -268,6 +268,10 @@ static inline u64 __arch_get_hw_counter(s32 clock_mode,
 	return U64_MAX;
 }
 
+static __always_inline const int *get_variablevar(void)
+{
+	return _variablevar;
+}
 static __always_inline const struct vdso_data *__arch_get_vdso_data(void)
 {
 	return __vdso_data;
