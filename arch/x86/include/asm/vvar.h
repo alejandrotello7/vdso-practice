@@ -47,7 +47,7 @@ extern char __vvar_page;
 #endif
 
 /* DECLARE_VVAR(offset, type, name) */
-DECLARE_VVAR(0,int,variablevar)
+DECLARE_VVAR(0,int,maxpid_data)
 DECLARE_VVAR(128, struct vdso_data, _vdso_data)
 
 #undef DECLARE_VVAR

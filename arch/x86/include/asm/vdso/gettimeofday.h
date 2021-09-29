@@ -20,7 +20,7 @@
 #include <asm/pvclock.h>
 #include <clocksource/hyperv_timer.h>
 
-#define _variablevar (VVAR(variablevar))
+//#define _variablevar (VVAR(variablevar))
 #define __vdso_data (VVAR(_vdso_data))
 #define __timens_vdso_data (TIMENS(_vdso_data))
 
@@ -267,11 +267,12 @@ static inline u64 __arch_get_hw_counter(s32 clock_mode,
 #endif
 	return U64_MAX;
 }
-
+/*
 static __always_inline const int *get_variablevar(void)
 {
 	return _variablevar;
 }
+*/
 static __always_inline const struct vdso_data *__arch_get_vdso_data(void)
 {
 	return __vdso_data;

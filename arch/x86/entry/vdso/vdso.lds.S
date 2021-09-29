@@ -27,8 +27,8 @@ VERSION {
 		__vdso_time;
 		clock_getres;
 		__vdso_clock_getres;
-		cpu_getter;
-		__vdso_cpu_getter;
+		get_maxpid;
+		__vdso_get_maxpid;
 		nr_cpus_getter;
 		__vdso_nr_cpus_getter;
 	local: *;

@@ -8,44 +8,8 @@
 #include <asm/processor.h> // cpu_data(), struct cpuinfo_x86
 #include <asm/mce.h>
 
-
-#include <linux/threads.h>
-#include <linux/bitmap.h>
-#include <linux/atomic.h>
-#include <linux/bug.h>
-
-#include <linux/mm.h>
-#include <linux/err.h>
-#include <linux/sched.h>
-#include <linux/sched/task_stack.h>
-#include <linux/slab.h>
-#include <linux/init.h>
-#include <linux/random.h>
-#include <linux/elf.h>
-#include <linux/cpu.h>
-#include <linux/ptrace.h>
-#include <linux/compiler.h>
-#include <linux/types.h>
-#include <linux/time_namespace.h>
-
-#include <asm/pvclock.h>
-#include <asm/proto.h>
-#include <asm/vdso.h>
-#include <asm/vvar.h>
-#include <asm/tlb.h>
-#include <asm/page.h>
-#include <asm/desc.h>
-#include <asm/cpufeature.h>
-#include <clocksource/hyperv_timer.h>
-
-
-
-
-
-
-#include "../../../../lib/vdso/cpugetter.c"
+#include "../../../../lib/vdso/getmaxpid.c"
 #include "../../../../lib/vdso/gettimeofday.c"
-//#include "vma.c"
 
 //extern int __vdso_cpu_getter(unsigned *cpu, unsigned *dummy, unsigned *cpu2);
 
@@ -55,10 +19,8 @@
 //notrace int __vdso_cpu_getter(struct __kernel_old_timeval *tv, struct timezone *tz)
 //int cpugetter(void);
 
-
-int getpidd(void);
  
-extern notrace int __vdso_cpu_getter(void)
+extern notrace int __vdso_get_maxpid(void)
 {
     //int x = num_present_cpus();
     //unsigned int x = NR_CPUS; //maximum number of CPUS that OS can handle
@@ -85,9 +47,7 @@ extern notrace int __vdso_cpu_getter(void)
     //unsigned int y = CONFIG_NR_CPUS_DEFAULT;
     //unsigned int x = NR_CPUS;
     //unsigned int p = current->state;
-    unsigned int x = cvdso_getvariable();
-    unsigned int z = PID_MAX_LIMIT;
-    return x;
+    return cvdso_getmaxpid();
 }
 
 extern notrace int __vdso_nr_cpus_getter(void)
@@ -96,10 +56,8 @@ extern notrace int __vdso_nr_cpus_getter(void)
     return x;
 }
 
-
-
-int cpu_getter(void)
-    __attribute__((weak, alias("__vdso_cpu_getter")));
+int get_maxpid(void)
+    __attribute__((weak, alias("__vdso_get_maxpid")));
 
 int nr_cpus_getter(void)
     __attribute__((weak, alias("__vdso_nr_cpus_getter")));

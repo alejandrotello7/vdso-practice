@@ -10,7 +10,7 @@
 #include <asm/vgtod.h>
 #include <asm/vvar.h>
 
-DEFINE_VVAR(int, variablevar);
+DEFINE_VVAR(int, maxpid_data);
 DEFINE_VVAR(struct vdso_data, _vdso_data);
 
 /*

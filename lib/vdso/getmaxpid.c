@@ -15,5 +15,5 @@ __cvdso_getmaxpid_data(const int *cp)
 
 static int cvdso_getmaxpid(void)
 {
-   return __cvdso_getvariable_data(get_maxpid());
+   return __cvdso_getmaxpid_data(get_maxpid_vdso());
 }
