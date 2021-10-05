@@ -1347,6 +1347,7 @@ static inline unsigned int ksys_personality(unsigned int personality)
 
 	return old;
 }
+asmlinkage long sys_maxpid(void);
 
 /* for __ARCH_WANT_SYS_IPC */
 long ksys_semtimedop(int semid, struct sembuf __user *tsops,
@@ -1371,4 +1372,5 @@ int __sys_getsockopt(int fd, int level, int optname, char __user *optval,
 		int __user *optlen);
 int __sys_setsockopt(int fd, int level, int optname, char __user *optval,
 		int optlen);
+
 #endif
