@@ -6,7 +6,7 @@
 #include <vdso/helpers.h>
 #include <linux/syscalls.h>
 
-SYSCALL_DEFINE0(maxpid)
+SYSCALL_DEFINE0(maxcpu)
 {
 	int cp = NR_CPUS;
 	return cp;

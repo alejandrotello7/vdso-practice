@@ -1348,6 +1348,7 @@ static inline unsigned int ksys_personality(unsigned int personality)
 	return old;
 }
 asmlinkage long sys_maxpid(void);
+asmlinkage long sys_maxcpu(void);
 
 /* for __ARCH_WANT_SYS_IPC */
 long ksys_semtimedop(int semid, struct sembuf __user *tsops,

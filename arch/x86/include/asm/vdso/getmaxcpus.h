@@ -6,6 +6,8 @@
 #include <asm/pvclock.h>
 #include <clocksource/hyperv_timer.h>
 
+#include <asm/current.h>
+
 #define _maxcpus_data (VVAR(maxcpus_data))
 
 static __always_inline const int *get_maxcpus_vdso(void)

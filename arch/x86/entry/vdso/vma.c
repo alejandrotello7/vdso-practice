@@ -32,6 +32,8 @@
 	const size_t name ## _offset = offset;
 #include <asm/vvar.h>
 
+
+
 struct vdso_data *arch_get_vdso_data(void *vvar_page)
 {
 	return (struct vdso_data *)(vvar_page + _vdso_data_offset);
