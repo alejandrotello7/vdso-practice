@@ -6,11 +6,12 @@
 #include <vdso/helpers.h>
 #include "../../arch/x86/include/asm/vdso/getmaxpid.h"
 
+
 static int 
 __cvdso_getmaxpid_data(const int *cp)
 {
-	cp = PID_MAX_LIMIT;
-	return cp;
+	//cp = PID_MAX_LIMIT;
+	return *cp;
 }
 
 static int cvdso_getmaxpid(void)

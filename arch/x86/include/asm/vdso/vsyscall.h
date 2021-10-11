@@ -23,6 +23,13 @@ struct vdso_data *__x86_get_k_vdso_data(void)
 {
 	return _vdso_data;
 }
+
+static __always_inline
+int *__x86_get_pid_vdso_data(void)
+{
+	return maxpid_data;
+}
+
 #define __arch_get_k_vdso_data __x86_get_k_vdso_data
 
 /* The asm-generic header needs to be included after the definitions above */
