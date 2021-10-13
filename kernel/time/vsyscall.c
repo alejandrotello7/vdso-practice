@@ -71,15 +71,16 @@ static inline void update_vdso_data(struct vdso_data *vdata,
 
 void update_vsyscall_pid(void){
 	int *vpiddata = __x86_get_pid_vdso_data();
-	*vpiddata = current->pid;
+	*vpiddata = current->tgid;
+	//*vpiddata = task_tgid_vnr(current);
 }
 
 void update_vsyscall(struct timekeeper *tk)
 {
 	struct vdso_data *vdata = __arch_get_k_vdso_data();
 	struct vdso_timestamp *vdso_ts;
-	int *vpiddata = __x86_get_pid_vdso_data();
-	*vpiddata = current->pid;
+	//int *vpiddata = __x86_get_pid_vdso_data();
+	//*vpiddata = current->pid;
 	s32 clock_mode;
 	u64 nsec;
 
@@ -124,6 +125,7 @@ void update_vsyscall(struct timekeeper *tk)
 
 	vdso_write_end(vdata);
 
+	
 	__arch_sync_vdso_data(vdata);
 }
 

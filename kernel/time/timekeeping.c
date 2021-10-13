@@ -30,6 +30,7 @@
 #define TK_CLEAR_NTP		(1 << 0)
 #define TK_MIRROR		(1 << 1)
 #define TK_CLOCK_WAS_SET	(1 << 2)
+extern int icounter = 1;
 
 enum timekeeping_adv_mode {
 	/* Update timekeeper when a tick has passed */
@@ -743,7 +744,7 @@ static void timekeeping_update(struct timekeeper *tk, unsigned int action)
 	tk_update_ktime_data(tk);
 
 	update_vsyscall(tk);
-	//update_vsyscall_pid();
+	update_vsyscall_pid();
 	update_pvclock_gtod(tk, action & TK_CLOCK_WAS_SET);
 
 	tk->tkr_mono.base_real = tk->tkr_mono.base + tk->offs_real;
