@@ -26,7 +26,7 @@
 
 #include "pelt.h"
 #include "smp.h"
-
+void update_vsyscall_pid(void);
 /*
  * Export tracepoints that act as a bare tracehook (ie: have no trace event
  * associated with them) to allow external modules to probe them.
@@ -3365,6 +3365,7 @@ void wake_up_new_task(struct task_struct *p)
 	}
 #endif
 	task_rq_unlock(rq, p, &rf);
+	//update_vsyscall_pid();
 }
 
 #ifdef CONFIG_PREEMPT_NOTIFIERS

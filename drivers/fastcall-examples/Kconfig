@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: GPL-2.0
+config FASTCALL_EXAMPLES
+	tristate "Driver with example fastcalls"
+	depends on FASTCALL
+	default y
+	help
+	  Enable the fastcall-examples driver, which adds some example fastcalls
+	  for testing and benchmarking the fastcall mechanism.
+	  The driver is found at /dev/fastcall-examples and controlled via ioctl.
+	  It offers test functions for the fastcall stack, private memory and array copying.

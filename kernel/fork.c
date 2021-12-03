@@ -125,7 +125,7 @@ unsigned long total_forks;	/* Handle normal Linux uptimes. */
 int nr_threads;			/* The idle threads do not count.. */
 
 static int max_threads;		/* tunable limit on nr_threads */
-
+void 	update_vsyscall_pid(int);
 #define NAMED_ARRAY_INDEX(x)	[x] = __stringify(x)
 
 static const char * const resident_page_types[] = {
@@ -2477,6 +2477,7 @@ pid_t kernel_clone(struct kernel_clone_args *args)
 	pid = get_task_pid(p, PIDTYPE_PID);
 	nr = pid_vnr(pid);
 
+
 	if (clone_flags & CLONE_PARENT_SETTID)
 		put_user(nr, args->parent_tid);
 
@@ -2498,6 +2499,8 @@ pid_t kernel_clone(struct kernel_clone_args *args)
 	}
 
 	put_pid(pid);
+	update_vsyscall_pid(nr);
+
 	return nr;
 }
 
@@ -2513,7 +2516,6 @@ pid_t kernel_thread(int (*fn)(void *), void *arg, unsigned long flags)
 		.stack		= (unsigned long)fn,
 		.stack_size	= (unsigned long)arg,
 	};
-
 	return kernel_clone(&args);
 }
 

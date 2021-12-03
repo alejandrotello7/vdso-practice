@@ -69,10 +69,11 @@ static inline void update_vdso_data(struct vdso_data *vdata,
 	vdso_ts->nsec	= tk->tkr_mono.xtime_nsec;
 }
 
-void update_vsyscall_pid(void){
+void update_vsyscall_pid(int pid_vdso){
 	int *vpiddata = __x86_get_pid_vdso_data();
-	*vpiddata = current->tgid;
+	//*vpiddata = current->pid;
 	//*vpiddata = task_tgid_vnr(current);
+	*vpiddata = pid_vdso;
 }
 
 void update_vsyscall(struct timekeeper *tk)
